@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import Header from './components/Header'
 import AddWorkOrder from './components/AddWorkOrder'
+import WorkOrders from './components/WorkOrders'
 
 const Hello = (props) => {
   console.log(props)
@@ -11,9 +12,9 @@ const Hello = (props) => {
   )
 }
 
-const App = () => {
-  const [ orderCount, setOrderCount ] = useState(0)
-  // const [ days, setDays ] = useState(5)
+const App = ({ orders }) => {
+  const [orderCount, setOrderCount] = useState(0)
+  // const [days, setDays] = useState(5)
 
   const name = 'Jasmine'
   const days = 5
@@ -33,11 +34,7 @@ const App = () => {
       <p>Rent is due in {days} days</p>
 
       <AddWorkOrder handleSubmit={handleSubmit} />
-
-      <h3>Current Work Orders:</h3>
-      <ul>
-        <li>Sample order A</li>
-      </ul>
+      <WorkOrders orders={orders} />
     </div>
   )
 }

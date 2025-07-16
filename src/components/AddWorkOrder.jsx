@@ -6,9 +6,9 @@ const AddWorkOrder = (props) => {
 
         <div className='form-control' >
           <label>Repair</label>
-          <input type="text" placeholder='Request for repair' name="order" />
-          <input type="text" placeholder='Additional notes' name="additionalNotes" />          
-          <input type="text" placeholder='Name of person submitting request' name="submittedBy" />
+          <input type="text" placeholder='Request for repair' name="repair" />
+          <input type="text" placeholder='Additional notes or location' name="notes" />          
+          <input type="text" placeholder='Person submitting request' name="submittedBy" />
           <input type="email" placeholder='Email' name="email" />
           <input type="date" name="dateAdded" />
         </div>
