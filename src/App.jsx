@@ -12,7 +12,8 @@ const Hello = (props) => {
   )
 }
 
-const App = ({ orders }) => {
+const App = (props) => {
+  const [orders, setOrders] = useState(props.orders)
   const [orderCount, setOrderCount] = useState(0)
   // const [days, setDays] = useState(5)
 
@@ -27,10 +28,10 @@ const App = ({ orders }) => {
 
   return (
     <div className='container'>
-      <Header name={name} />
+      <Header />
       <Hello name={name} />
       
-      <p>You have {orderCount} work orders in progress.</p>
+      <p>You have {orders.length} work orders in progress.</p>
       <p>Rent is due in {days} days</p>
 
       <AddWorkOrder handleSubmit={handleSubmit} />

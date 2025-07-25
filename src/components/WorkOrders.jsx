@@ -1,12 +1,12 @@
+import WorkOrder from './WorkOrder'
+
 const WorkOrders = ({ orders }) => {
   return (
     <div>
       <h3>Current Work Orders:</h3>
       <ul>
       {orders.map(order => 
-        <li key={order.id}>
-          {order.repair}
-        </li>
+        <WorkOrder key={order.id} order={order} />
       )}
       </ul>
     </div>
