@@ -1,16 +1,21 @@
+import { useState } from 'react'
+
 const AddWorkOrder = (props) => {
+  const[issue, setIssue] = useState('')
   
   return (
     <div className='container' >
-      <h3>Need a repair? Submit a work order here:</h3>
+      <h3>Have an issue that needs to be looked at? Submit a work order here:</h3>
 
       <form className='add-form' onSubmit={props.handleSubmit}>
         <div className='form-control' >
-          <label>Repair</label>
+          <label>Issue</label>
           <input 
             type="text" 
             placeholder='Request for repair' 
-            name="repair"
+            name="issue"
+            value={issue}
+            onChange={(e) => setIssue(e.target.value)}
           />
           <input 
             type="text" 
@@ -25,11 +30,7 @@ const AddWorkOrder = (props) => {
           <input 
             type="email" 
             placeholder='Email' 
-            name="email" 
-          />
-          <input 
-            type="date" 
-            name="dateAdded" 
+            name="submitterEmail" 
           />
         </div>
 

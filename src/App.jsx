@@ -23,7 +23,11 @@ const App = (props) => {
   const handleSubmit = (e) => {
     e.preventDefault()
     console.log('submitted')
+    console.log(e.target)
     setOrderCount(orderCount + 1)
+
+
+    setOrders(orders.concat())
   }
 
   return (
