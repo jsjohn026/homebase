@@ -1,7 +1,10 @@
 import { useState } from 'react'
 
 const AddWorkOrder = (props) => {
-  const[issue, setIssue] = useState('')
+  const [issue, setIssue] = useState('')
+  const [notes, setNotes] = useState('')
+  const [submitter, setSubmitter] = useState('')
+  const [email, setEmail] = useState('')
   
   return (
     <div className='container' >
@@ -21,16 +24,22 @@ const AddWorkOrder = (props) => {
             type="text" 
             placeholder='Additional notes or location' 
             name="notes" 
+            value={notes}
+            onChange={(e) => setNotes(e.target.value)}
           />          
           <input 
             type="text" 
             placeholder='Person submitting request' 
             name="submittedBy" 
+            value={submitter}
+            onChange={(e) => setSubmitter(e.target.value)}
           />
           <input 
             type="email" 
             placeholder='Email' 
             name="submitterEmail" 
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
           />
         </div>
 
