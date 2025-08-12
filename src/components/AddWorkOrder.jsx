@@ -5,12 +5,18 @@ const AddWorkOrder = (props) => {
   const [notes, setNotes] = useState('')
   const [submitter, setSubmitter] = useState('')
   const [email, setEmail] = useState('')
+
+  const onSubmit = (e) => {
+    e.preventDefault()
+
+
+  }
   
   return (
     <div className='container' >
       <h3>Have an issue that needs to be looked at? Submit a work order here:</h3>
 
-      <form className='add-form' onSubmit={props.handleSubmit}>
+      <form className='add-form' onSubmit={onSubmit}>
         <div className='form-control' >
           <label>Issue</label>
           <input 
