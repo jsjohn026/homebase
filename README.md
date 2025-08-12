@@ -1,4 +1,7 @@
 # React + Vite
+This app serves as a portal to submit requests for repairs or attention from a renter to a tenant. 
+
+# React + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
 
