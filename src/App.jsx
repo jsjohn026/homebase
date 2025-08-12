@@ -14,7 +14,7 @@ const Hello = (props) => {
 
 const App = (props) => {
   const [orders, setOrders] = useState(props.orders)
-  const [orderCount, setOrderCount] = useState(0)
+  // const [orderCount, setOrderCount] = useState(0)
   // const [days, setDays] = useState(5)
 
   const name = 'Jasmine'
@@ -24,10 +24,10 @@ const App = (props) => {
     e.preventDefault()
     console.log('submitted')
     console.log(e.target)
-    setOrderCount(orderCount + 1)
+    // setOrderCount(orderCount + 1)
 
 
-    setOrders(orders.concat())
+    // setOrders(orders.concat())
   }
 
   return (
