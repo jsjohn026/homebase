@@ -20,7 +20,7 @@ const App = (props) => {
   const name = 'Jasmine'
   const days = 5
 
-  const handleSubmit = (e) => {
+  const addOrder = (e) => {
     e.preventDefault()
     console.log('submitted')
     console.log(e.target)
@@ -38,7 +38,7 @@ const App = (props) => {
       <p>You have {orders.length} work orders in progress.</p>
       <p>Rent is due in {days} days</p>
 
-      <AddWorkOrder handleSubmit={handleSubmit} />
+      <AddWorkOrder onAdd={addOrder} />
       <WorkOrders orders={orders} />
     </div>
   )
