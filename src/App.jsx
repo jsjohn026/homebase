@@ -1,10 +1,11 @@
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
+import axios from 'axios'
 import Header from './components/Header'
 import AddWorkOrder from './components/AddWorkOrder'
 import WorkOrders from './components/WorkOrders'
 
 const Hello = (props) => {
-  console.log(props)
+  // console.log(props)
   return (
     <div  className='header' >
       <h3>Hello {props.name}, welcome home!</h3>
@@ -12,13 +13,24 @@ const Hello = (props) => {
   )
 }
 
-const App = (props) => {
-  const [orders, setOrders] = useState(props.orders)
+const App = () => {
+  const [orders, setOrders] = useState([])
   // const [orderCount, setOrderCount] = useState(0)
   // const [days, setDays] = useState(5)
 
   const name = 'Jasmine'
   const days = 5
+
+  useEffect(() => {
+    console.log('effect')
+    axios
+      .get('http://localhost:3005/api/orders')
+      .then(response => {
+        console.log('promise fulfilled')
+        setOrders(response.data)
+      })
+  }, [])
+  console.log('render', orders.length, 'orders')
 
   const addOrder = (e) => {
     e.preventDefault()

@@ -1,5 +1,5 @@
 import { useState } from 'react'
-import order from '../../../homebbackend/models/order'
+// import order from '../../../homebbackend/models/order'
 
 const AddWorkOrder = ({ onAdd }) => {
   const [issue, setIssue] = useState('')
@@ -9,6 +9,7 @@ const AddWorkOrder = ({ onAdd }) => {
 
   const onSubmit = (e) => {
     e.preventDefault()
+
     if (!order) {
       alert('Please add an issue')
       return

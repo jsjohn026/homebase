@@ -29,4 +29,5 @@ const orders = [
   },
 ]
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App orders={orders} />)
+// ReactDOM.createRoot(document.getElementById('root')).render(<App orders={orders} />)
+ReactDOM.createRoot(document.getElementById('root')).render(<App />)

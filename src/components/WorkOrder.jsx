@@ -1,6 +1,6 @@
 const WorkOrder = ({ order }) => {
   return (
-    <li>{order.repair}</li>
+    <li>{order.issue}</li>
   )
 }
 
