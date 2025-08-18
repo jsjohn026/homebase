@@ -15,6 +15,7 @@ const Hello = (props) => {
 
 const App = () => {
   const [orders, setOrders] = useState([])
+  const [newOrder, setNewOrder] = useState('')
   // const [orderCount, setOrderCount] = useState(0)
   // const [days, setDays] = useState(5)
 
@@ -30,12 +31,16 @@ const App = () => {
         setOrders(response.data)
       })
   }, [])
+
   console.log('render', orders.length, 'orders')
 
   const addOrder = (e) => {
     e.preventDefault()
     console.log('submitted')
     console.log(e.target)
+    const orderObject = {
+      
+    }
     // setOrderCount(orderCount + 1)
 
 

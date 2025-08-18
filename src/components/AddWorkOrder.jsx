@@ -10,7 +10,7 @@ const AddWorkOrder = ({ onAdd }) => {
   const onSubmit = (e) => {
     e.preventDefault()
 
-    if (!order) {
+    if (!issue) {
       alert('Please add an issue')
       return
     }
