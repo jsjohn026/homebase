@@ -5,7 +5,6 @@ import AddWorkOrder from './components/AddWorkOrder'
 import WorkOrders from './components/WorkOrders'
 
 const Hello = (props) => {
-  // console.log(props)
   return (
     <div  className='header' >
       <h3>Hello {props.name}, welcome home!</h3>
@@ -15,8 +14,6 @@ const Hello = (props) => {
 
 const App = () => {
   const [orders, setOrders] = useState([])
-  const [newOrder, setNewOrder] = useState('')
-  // const [orderCount, setOrderCount] = useState(0)
   // const [days, setDays] = useState(5)
 
   const name = 'Jasmine'
@@ -28,24 +25,28 @@ const App = () => {
       .get('http://localhost:3005/api/orders')
       .then(response => {
         console.log('promise fulfilled')
+        console.log('this is the response:', response.data)
         setOrders(response.data)
       })
   }, [])
 
   console.log('render', orders.length, 'orders')
 
-  const addOrder = (e) => {
-    e.preventDefault()
-    console.log('submitted')
-    console.log(e.target)
-    const orderObject = {
-      
+  const addOrder = (props) => {
+    const newOrderObject = {
+      issue: props.issue,
+      notes: props.notes,
+      submittedBy: props.submitter, 
+      submitterEmail: props.email,
+      dateSubmitted: props.date
     }
-    // setOrderCount(orderCount + 1)
 
-
-    // setOrders(orders.concat())
-  }
+    axios
+      .post('http://localhost:3005/api/orders', newOrderObject)
+      .then(response => {
+        setOrders(prevOrders => [...prevOrders, response.data])
+      })
+    }
 
   return (
     <div className='container'>

@@ -15,7 +15,16 @@ const AddWorkOrder = ({ onAdd }) => {
       return
     }
 
-    onAdd({ issue, notes, submitter, email })
+    const newOrder = {
+      issue,
+      notes,
+      submitter, 
+      email, 
+      date: new Date().toString()
+    }
+
+    onAdd(newOrder)
+
     setIssue('')
     setNotes('')
     setSubmitter('')
