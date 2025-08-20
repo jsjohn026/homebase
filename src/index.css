@@ -63,6 +63,7 @@ body {
   margin: 5px;
   padding: 10px 20px;
   cursor: pointer;
+  list-style-type: none;
 }
 
 .task.reminder {

@@ -4,10 +4,14 @@ import Header from './components/Header'
 import AddWorkOrder from './components/AddWorkOrder'
 import WorkOrders from './components/WorkOrders'
 
-const Hello = (props) => {
+const Hello = ({ name, numOrders, days}) => {
   return (
     <div  className='header' >
-      <h3>Hello {props.name}, welcome home!</h3>
+      <h4>Hello {name}, welcome home!</h4>
+        <div>
+          <p>You have {numOrders} work orders in progress.</p>
+          <p>Rent is due in {days} days</p>
+        </div>
     </div>
   )
 }
@@ -51,11 +55,7 @@ const App = () => {
   return (
     <div className='container'>
       <Header />
-      <Hello name={name} />
-      
-      <p>You have {orders.length} work orders in progress.</p>
-      <p>Rent is due in {days} days</p>
-
+      {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
       <AddWorkOrder onAdd={addOrder} />
       <WorkOrders orders={orders} />
     </div>

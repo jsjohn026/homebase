@@ -32,12 +32,10 @@ const AddWorkOrder = ({ onAdd }) => {
   }
   
   return (
-    <div className='container' >
-      <h3>Have an issue that needs to be looked at? Submit a work order here:</h3>
-
+    <div >
       <form className='add-form' onSubmit={onSubmit}>
         <div className='form-control' >
-          <label>Issue</label>
+          <label>Have an issue? Submit a work order:</label>
           <input 
             type="text" 
             placeholder='Request for repair' 
