@@ -1,9 +1,11 @@
 import Button from './Button'
+import logo from '/images/high-res-logo-transparent.png'
 
 const Header = () => {
   return (
     <header className='header'>
-      <h1>HomeBase</h1>
+      <img src={logo} className='logo' alt="Homebase logo" />
+      {/* <h1>HomeBase</h1> */}
       <Button color='green' text='Add'/>
     </header>
   )

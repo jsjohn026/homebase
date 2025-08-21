@@ -22,11 +22,10 @@ body {
 }
 
 .container {
-  max-width: 500px;
+  max-width: 550px;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  /* border: 1px solid #0A1653; */
   padding: 30px;
   border-radius: 5px;
   position: relative;
@@ -55,6 +54,13 @@ body {
   align-items: center;
   color: #FFFCFC;
   margin-bottom: 20px;
+}
+
+.logo {
+  height: 36px;
+  width: 240px;
+  margin-right: 10px;
+  filter: brightness(0) invert(1);
 }
 
 .btn {
