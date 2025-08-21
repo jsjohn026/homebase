@@ -12,6 +12,13 @@
 
 body {
   font-family: 'Poppins', sans-serif;
+  margin: 0;
+  padding: 0;
+  background-image: url('/images/background_kitchen.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: center;
 }
 
 .container {
@@ -19,15 +26,34 @@ body {
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
-  border: 1px solid steelblue;
+  /* border: 1px solid #0A1653; */
   padding: 30px;
   border-radius: 5px;
+  position: relative;
+  z-index: 0;
+}
+
+.app-overlay {
+  position: absolute;
+  background-color: rgba(20, 30, 60, 0.7);
+  box-shadow: inset 0 0 80px rgba(0, 0, 0, 0.5);
+  z-index: 1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+}
+
+.app-content {
+  position: relative;
+  z-index: 2;
 }
 
 .header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  color: #FFFCFC;
   margin-bottom: 20px;
 }
 
@@ -82,6 +108,10 @@ body {
 
 .form-control {
   margin: 20px 0;
+}
+
+.form-control label {
+  color: #FFFCFC;
 }
 
 .form-control label {

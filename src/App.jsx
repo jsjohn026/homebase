@@ -54,10 +54,13 @@ const App = () => {
 
   return (
     <div className='container'>
-      <Header />
-      {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
-      <AddWorkOrder onAdd={addOrder} />
-      <WorkOrders orders={orders} />
+      <div className='app-overlay'/>
+      <div className='app-content'>
+        <Header />
+        {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
+        <AddWorkOrder onAdd={addOrder} />
+        <WorkOrders orders={orders} />
+      </div>
     </div>
   )
 }
