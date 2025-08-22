@@ -1,5 +1,5 @@
 import Button from './Button'
-import logo from '/images/high-res-logo-transparent.png'
+import logo from '/images/white-high-res-logo-transparent.png'
 
 const Header = () => {
   return (

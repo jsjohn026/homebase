@@ -57,10 +57,9 @@ body {
 }
 
 .logo {
-  height: 36px;
+  height: 48px;
   width: 240px;
   margin-right: 10px;
-  filter: brightness(0) invert(1);
 }
 
 .btn {
