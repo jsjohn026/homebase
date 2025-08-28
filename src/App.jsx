@@ -50,7 +50,11 @@ const App = () => {
       .then(response => {
         setOrders(prevOrders => [...prevOrders, response.data])
       })
-    }
+  }
+
+  const deleteOrder = (id) => {
+    console.log('delete', id)
+  }
 
   return (
     <div className='container'>
@@ -59,7 +63,7 @@ const App = () => {
         <Header />
         {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
         <AddWorkOrder onAdd={addOrder} />
-        <WorkOrders orders={orders} />
+        <WorkOrders orders={orders} onDelete={deleteOrder} />
       </div>
     </div>
   )

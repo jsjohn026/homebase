@@ -1,15 +1,23 @@
 import dayjs from 'dayjs'
 import advancedFormat from 'dayjs/plugin/advancedFormat'
+import { FaTimes } from 'react-icons/fa'
 
 dayjs.extend(advancedFormat)
 
-const WorkOrder = ({ order }) => {
+const WorkOrder = ({ order, onDelete }) => {
   // const toggleCompletion = () => {}
   const formattedDate = dayjs(order.dateSubmitted).format('MMMM Do [at] h:mma')
 
   return (
     <div className='task' >
-      <h3>{order.issue}</h3>
+      <h3>
+        {order.issue} 
+        
+        <FaTimes 
+          style={{ color: 'red', cursor: 'pointer' }} 
+          onClick={onDelete} 
+        />
+      </h3>
       <p>submitted {formattedDate}</p>
       {/* <button onClick={toggleCompletion}>{}x</button> */}
     </div>
