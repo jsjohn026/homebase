@@ -12,10 +12,10 @@ const WorkOrder = ({ order, onDelete }) => {
     <div className='task' >
       <h3>
         {order.issue} 
-        
+
         <FaTimes 
           style={{ color: 'red', cursor: 'pointer' }} 
-          onClick={onDelete} 
+          onClick={() => onDelete(order.id)} 
         />
       </h3>
       <p>submitted {formattedDate}</p>

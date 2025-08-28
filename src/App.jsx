@@ -53,7 +53,15 @@ const App = () => {
   }
 
   const deleteOrder = (id) => {
-    console.log('delete', id)
+    axios
+      .delete(`http://localhost:3005/api/orders/${id}`)
+      .then(response => {
+        setOrders(orders.filter((order) => order.id !== id))
+        console.log('Work order deleted successfully', response.data)
+      })
+      .catch(error => {
+        console.log('Error deleting work order', error)
+      })
   }
 
   return (
@@ -63,7 +71,10 @@ const App = () => {
         <Header />
         {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
         <AddWorkOrder onAdd={addOrder} />
-        <WorkOrders orders={orders} onDelete={deleteOrder} />
+        {orders.length > 0 ? 
+          <WorkOrders orders={orders} onDelete={deleteOrder} />
+          : 'No work orders to show'
+        }
       </div>
     </div>
   )
