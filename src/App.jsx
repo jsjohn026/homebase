@@ -64,6 +64,10 @@ const App = () => {
       })
   }
 
+  const toggleCompletion = (id) => {
+    setOrders(orders.map((order) => order.id === id ? { ...order, completed: !order.completed } : order ))
+  }
+
   return (
     <div className='container'>
       <div className='app-overlay'/>
@@ -72,7 +76,11 @@ const App = () => {
         {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
         <AddWorkOrder onAdd={addOrder} />
         {orders.length > 0 ? 
-          <WorkOrders orders={orders} onDelete={deleteOrder} />
+          <WorkOrders 
+            orders={orders} 
+            onDelete={deleteOrder} 
+            onToggle={toggleCompletion}
+          />
           : 'No work orders to show'
         }
       </div>

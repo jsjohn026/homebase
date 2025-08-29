@@ -4,12 +4,11 @@ import { FaTimes } from 'react-icons/fa'
 
 dayjs.extend(advancedFormat)
 
-const WorkOrder = ({ order, onDelete }) => {
-  // const toggleCompletion = () => {}
+const WorkOrder = ({ order, onDelete, onToggle }) => {
   const formattedDate = dayjs(order.dateSubmitted).format('MMMM Do [at] h:mma')
 
   return (
-    <div className='task' >
+    <div className={`task ${order.completed ? 'reminder' : '' }`} onDoubleClick={() => onToggle(order.id)} >
       <h3>
         {order.issue} 
 
