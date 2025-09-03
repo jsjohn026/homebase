@@ -17,6 +17,7 @@ const Hello = ({ name, numOrders, days}) => {
 }
 
 const App = () => {
+  const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
   // const [days, setDays] = useState(5)
 
@@ -72,9 +73,9 @@ const App = () => {
     <div className='container'>
       <div className='app-overlay'/>
       <div className='app-content'>
-        <Header />
+        <Header onAdd={() => setShowAddButton(!showAddButton)} />
         {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
-        <AddWorkOrder onAdd={addOrder} />
+        {showAddButton && <AddWorkOrder onAdd={addOrder} />}
         {orders.length > 0 ? 
           <WorkOrders 
             orders={orders} 

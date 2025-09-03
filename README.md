@@ -1,5 +1,5 @@
 # React + Vite
-This app serves as a portal to submit requests for repairs or attention from a renter to a tenant. 
+This app serves as a portal to submit requests for repairs or attention from a renter/tenant to a property owner. 
 
 # React + Vite
 
