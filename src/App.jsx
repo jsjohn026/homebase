@@ -24,9 +24,6 @@ const App = () => {
   useEffect(() => {
     orderService
       .getAll()
-    // console.log('effect')
-    // axios
-    //   .get('http://localhost:3005/api/orders')
       .then(response => {
         console.log('promise fulfilled')
         console.log('this is the response:', response.data)
