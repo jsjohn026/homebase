@@ -3,6 +3,7 @@ import axios from 'axios'
 import Header from './components/Header'
 import AddWorkOrder from './components/AddWorkOrder'
 import WorkOrders from './components/WorkOrders'
+import orderService from './services/orders'
 
 const Hello = ({ name, numOrders, days}) => {
   return (
@@ -19,15 +20,13 @@ const Hello = ({ name, numOrders, days}) => {
 const App = () => {
   const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
-  // const [days, setDays] = useState(5)
-
-  const name = 'Jasmine'
-  const days = 5
 
   useEffect(() => {
-    console.log('effect')
-    axios
-      .get('http://localhost:3005/api/orders')
+    orderService
+      .getAll()
+    // console.log('effect')
+    // axios
+    //   .get('http://localhost:3005/api/orders')
       .then(response => {
         console.log('promise fulfilled')
         console.log('this is the response:', response.data)
@@ -37,6 +36,10 @@ const App = () => {
 
   console.log('render', orders.length, 'orders')
 
+  const toggleCompletion = (id) => {
+    setOrders(orders.map((order) => order.id === id ? { ...order, completed: !order.completed } : order ))
+  }
+  
   const addOrder = (props) => {
     const newOrderObject = {
       issue: props.issue,
@@ -65,16 +68,15 @@ const App = () => {
       })
   }
 
-  const toggleCompletion = (id) => {
-    setOrders(orders.map((order) => order.id === id ? { ...order, completed: !order.completed } : order ))
-  }
 
   return (
     <div className='container'>
       <div className='app-overlay'/>
       <div className='app-content'>
-        <Header onAdd={() => setShowAddButton(!showAddButton)} />
-        {/* <Hello name={name} numOrders={orders.length} days={days} /> */}
+        <Header 
+          onAdd={() => setShowAddButton(!showAddButton)} 
+          showAddForm={showAddButton} 
+        />
         {showAddButton && <AddWorkOrder onAdd={addOrder} />}
         {orders.length > 0 ? 
           <WorkOrders 

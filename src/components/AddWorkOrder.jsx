@@ -4,8 +4,8 @@ const AddWorkOrder = ({ onAdd }) => {
   const initialState = {
     issue: '',
     notes: '',
-    submitter: '',
-    email: ''
+    submittedBy: '',
+    submitterEmail: ''
   }
   
   const [formData, setFormData] = useState(initialState)
@@ -55,15 +55,15 @@ const AddWorkOrder = ({ onAdd }) => {
           <input 
             type="text" 
             placeholder='Person submitting request' 
-            name="submitter" 
-            value={formData.submitter}
+            name="submittedBy" 
+            value={formData.submittedBy}
             onChange={handleChange}
           />
           <input 
             type="email" 
             placeholder='Email' 
             name="submitterEmail" 
-            value={formData.email}
+            value={formData.submitterEmail}
             onChange={handleChange}
           />
         </div>
