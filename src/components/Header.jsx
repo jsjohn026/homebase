@@ -5,7 +5,11 @@ const Header = ({ onAdd, showAddForm }) => {
   return (
     <header className='header'>
       <img src={logo} className='logo' alt="Homebase logo" />
-      <Button color='green' text={showAddForm ? 'Close' : 'Add'} onClick={onAdd} />
+      <Button 
+        color={showAddForm ? 'red' : 'green'} 
+        text={showAddForm ? 'Close' : 'Add'} 
+        onClick={onAdd} 
+      />
     </header>
   )
 }
