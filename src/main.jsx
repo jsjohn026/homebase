@@ -1,5 +1,17 @@
 import ReactDOM from 'react-dom/client'
 import App from './App'
 import './index.css'
+import { BrowserRouter } from 'react-router-dom'
+import 'react-toastify/dist/ReactToastify.css'
+import React from 'react'
 
-ReactDOM.createRoot(document.getElementById('root')).render(<App />)
+const root = ReactDOM.createRoot(document.getElementById('root'))
+root.render(
+  <React.StrictMode>
+    <BrowserRouter>
+    <App />
+    </BrowserRouter>
+  </React.StrictMode>
+)
+
+// Remove the React.StrictMode later when you are testing the application and your data is being fetched twice.
