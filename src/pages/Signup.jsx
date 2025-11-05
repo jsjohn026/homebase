@@ -1,9 +1,24 @@
 import { Link, useNavigate } from 'react-router-dom'
 import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
+import { useState } from 'react'
 
 const Signup = () => {
   const navigate = useNavigate()
+  const [inputValue, setInputValue] = useState({
+    email: '', 
+    password: '',
+    username: ''
+  })
+
+  const { email, password, username } = inputValue
+  const handleOnChange = (e) => {
+    const { name, value } = e.target
+    setInputValue({
+      ...inputValue,
+      [name]: value
+    })
+  }
 
   const handleSubmit = async (e) => {
     e.preventDefault()
