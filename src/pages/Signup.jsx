@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom'
-import axios from 'axios'
 import { ToastContainer, toast } from 'react-toastify'
 import { useState } from 'react'
+import authService from '../services/auth'
 
 const Signup = () => {
   const navigate = useNavigate()
@@ -20,8 +20,38 @@ const Signup = () => {
     })
   }
 
+  const handleError = (err) => 
+    toast.error(err, {
+      position: 'bottom-left'
+    })
+  
+  const handleSuccess = (msg) => 
+    toast.success(msg, {
+      position: 'bottom-right'
+    })
+
   const handleSubmit = async (e) => {
     e.preventDefault()
+    try {
+      const { data } = await authService.signup(inputValue)
+      const { success, message } = data
+      if (success) {
+        handleSuccess(message)
+        setTimeout(() => {
+          navigate('/')
+        }, 1000)
+      } else {
+        handleError(message)
+      }
+    } catch (error) {
+      console.log(error)
+    }
+    setInputValue({
+      ...inputValue,
+      email: '',
+      password: '', 
+      username: ''
+    })
   }
 
   return (
@@ -60,7 +90,7 @@ const Signup = () => {
         </div>
         <button type="submit">Submit</button>
         <span>
-          Already have an account? <link to={"/login"}>Login</link>
+          Already have an account? <Link to={"/login"}>Login</Link>
         </span>
       </form>
       <ToastContainer />
