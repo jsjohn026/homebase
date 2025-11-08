@@ -76,8 +76,12 @@ const Login = () => {
             onChange={handleOnChange}
           />
         </div>
-        <button type="submit"></button>
+        <button type="submit">Submit</button>
+        <span>
+          Don't have an account? <Link to={'/signup'}>Signup</Link>
+        </span>
       </form>
+      <ToastContainer />
     </div>
   )
 }
