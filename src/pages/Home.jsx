@@ -1,12 +1,48 @@
 import { useState, useEffect } from 'react'
+import { useNavigate } from 'react-router-dom'
+import { useCookies } from 'react-cookie'
+import { ToastContainer, toast } from 'react-toastify'
 import Header from '../components/Header'
 import AddWorkOrder from '../components/AddWorkOrder'
 import WorkOrders from '../components/WorkOrders'
 import orderService from '../services/orders'
+import authService from '../services/auth'
 
 const Home = () => {
+  const navigate = useNavigate()
+  const [cookies, removeCookie] = useCookies([])
+  const [username, setUsername] = useState('')
   const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
+
+  useEffect(() => {
+    const verifyCookie = async () => {
+      if (!cookies.token) { 
+        navigate("/login")
+        return
+      }
+
+      try {
+        const { data } = await authService.verify()
+        const { status, user } = data
+
+        if (status) {
+          setUsername(user)
+          toast(`Hello ${user}`, {
+            position: 'top-right'
+          })
+        } else {
+          removeCookie('token')
+          navigate('/login')
+        }
+      } catch (error) {
+        console.log('Auth verification error:', error)
+        removeCookie('token')
+        navigate('/login')
+      }
+
+    }
+  })
 
   useEffect(() => {
     orderService
