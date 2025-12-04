@@ -40,19 +40,28 @@ const Home = () => {
         removeCookie('token')
         navigate('/login')
       }
-
     }
-  })
+
+    verifyCookie()
+  }, [cookies, navigate, removeCookie])
 
   useEffect(() => {
-    orderService
-      .getAll()
-      .then(response => {
-        console.log('promise fulfilled')
-        console.log('this is the response:', response.data)
-        setOrders(response.data)
-      })
-  }, [])
+    if (username) {
+      orderService
+        .getAll()
+        .then(response => {
+          console.log('promise fulfilled')
+          console.log('this is the response:', response.data)
+          setOrders(response.data)
+        })
+        .catch(error => {
+          console.log('Error fetching orders:', error)
+          toast.error('Failed to load orders', {
+            position: 'bottom-left'
+          })
+        })
+    }
+  }, [username])
 
   console.log('render', orders.length, 'orders')
 
