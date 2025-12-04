@@ -78,6 +78,9 @@ const Home = () => {
       })
       .catch(error => {
         console.log('Error updating order', error)
+        toast.error('Failed to update order', {
+          position: 'bottom-left'
+        })
       })
   }
   
@@ -94,9 +97,15 @@ const Home = () => {
       .create(newOrderObject)
       .then(response => {
         setOrders(prevOrders => [...prevOrders, response.data])
+        toast.success('Order added successfully', {
+          position: 'bottom-right'
+        })
       })
       .catch(error => {
         console.log('Error adding work order', error)
+        toast.error('Failed to add order', {
+          position: 'bottom-left'
+        })
       })
   }
 
@@ -106,10 +115,24 @@ const Home = () => {
       .then(response => {
         setOrders(orders.filter((order) => order.id !== id))
         console.log('Work order deleted successfully', response.data)
+        toast.success('Order deleted successfully', {
+          position: 'bottom-right'
+        })
       })
       .catch(error => {
         console.log('Error deleting work order', error)
+        toast.error('Failed to delete order', {
+          position: 'bottom-left'
+        })
       })
+  }
+
+  const handleLogout = () => {
+    removeCookie('token')
+    toast.success('Logged out successfully', {
+      position: 'botton-right'
+    })
+    navigate('/login')
   }
 
 
@@ -119,7 +142,9 @@ const Home = () => {
       <div className='app-content'>
         <Header 
           onAdd={() => setShowAddButton(!showAddButton)} 
-          showAddForm={showAddButton} 
+          showAddForm={showAddButton}
+          username={username}
+          onLogout={handleLogout} 
         />
         {showAddButton && <AddWorkOrder onAdd={addOrder} />}
         {orders.length > 0 ? 
@@ -131,6 +156,7 @@ const Home = () => {
           : 'No work orders to show'
         }
       </div>
+      <ToastContainer />
     </div>
   )
 }
