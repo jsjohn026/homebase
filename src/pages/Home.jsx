@@ -17,13 +17,19 @@ const Home = () => {
 
   useEffect(() => {
     const verifyCookie = async () => {
+      console.log('All cookies:', cookies)
+      console.log('Token cookie:', cookies.token)
       if (!cookies.token) { 
+        console.log('No token found, redirecting to login')
         navigate("/login")
         return
       }
 
+      console.log('Token exists, verifying...')
+
       try {
         const { data } = await authService.verify()
+        console.log('Verify response:', data)
         const { status, user } = data
 
         if (status) {
@@ -32,6 +38,7 @@ const Home = () => {
             position: 'top-right'
           })
         } else {
+          console.log('Status false, removing cookie')
           removeCookie('token')
           navigate('/login')
         }

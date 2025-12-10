@@ -4,13 +4,28 @@
 @tailwind components;
 @tailwind utilities; */
 
-* {
+*, 
+::before,
+::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+label {
+  font-size: 1.2rem;
+  color: #f4f4f4;
+}
+
+html, body {
+  height: 100%;
+  width: 100%;
+}
+
 body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
   font-family: 'Poppins', sans-serif;
   color: #f4f4f4;
   margin: 0;
@@ -20,6 +35,66 @@ body {
   background-repeat: no-repeat;
   background-attachment: fixed;
   background-position: center;
+}
+
+.form_container {
+  background-color: rgba(20, 30, 60, 0.7);
+  padding: 2rem 3rem;
+  border-radius: 0.5rem;
+  width: 100%;
+  max-width: 400px;
+  box-shadow: 8px 8px 24px 0px rgba(66, 68, 90, 1);
+}
+
+.form_container > h2 {
+  margin-block: 1rem;
+  padding-block: 0.6rem;
+  color: #FFFCFC;
+}
+
+.form_container > form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.4rem;
+}
+
+.form_container div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.form_container input {
+  border: none;
+  padding: 0.5rem;
+  border-bottom: 1px solid gray;
+  font-size: 1.1rem;
+  outline: none;
+}
+
+.form_container input::placeholder {
+  font-size: 0.9rem;
+  font-style: italic;
+}
+
+.form_container button {
+  background-color: #000;
+  color: #fff;
+  border: none;
+  padding: 0.6rem;
+  font-size: 1rem;
+  font-family: inherit;
+  cursor: pointer;
+  border-radius: 0.3rem;
+}
+
+span a {
+  text-decoration: none;
+  color: #fff;
+}
+
+.home_page span {
+  
 }
 
 .container {
@@ -119,9 +194,6 @@ body {
 
 .form-control label {
   color: #FFFCFC;
-}
-
-.form-control label {
   display: block;
 }
 
