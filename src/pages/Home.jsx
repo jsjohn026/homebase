@@ -1,6 +1,5 @@
 import { useState, useEffect } from 'react'
 import { useNavigate } from 'react-router-dom'
-import { useCookies } from 'react-cookie'
 import { ToastContainer, toast } from 'react-toastify'
 import Header from '../components/Header'
 import AddWorkOrder from '../components/AddWorkOrder'
@@ -10,26 +9,14 @@ import authService from '../services/auth'
 
 const Home = () => {
   const navigate = useNavigate()
-  const [cookies, removeCookie] = useCookies([])
   const [username, setUsername] = useState('')
   const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
 
   useEffect(() => {
     const verifyCookie = async () => {
-      console.log('All cookies:', cookies)
-      console.log('Token cookie:', cookies.token)
-      if (!cookies.token) { 
-        console.log('No token found, redirecting to login')
-        navigate("/login")
-        return
-      }
-
-      console.log('Token exists, verifying...')
-
       try {
         const { data } = await authService.verify()
-        console.log('Verify response:', data)
         const { status, user } = data
 
         if (status) {
@@ -38,19 +25,16 @@ const Home = () => {
             position: 'top-right'
           })
         } else {
-          console.log('Status false, removing cookie')
-          removeCookie('token')
           navigate('/login')
         }
       } catch (error) {
         console.log('Auth verification error:', error)
-        removeCookie('token')
         navigate('/login')
       }
     }
 
     verifyCookie()
-  }, [cookies, navigate, removeCookie])
+  }, [navigate])
 
   useEffect(() => {
     if (username) {
@@ -137,7 +121,7 @@ const Home = () => {
   const handleLogout = () => {
     removeCookie('token')
     toast.success('Logged out successfully', {
-      position: 'botton-right'
+      position: 'bottom-right'
     })
     navigate('/login')
   }
