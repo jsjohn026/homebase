@@ -13,4 +13,8 @@ const verify = () => {
   return axios.post(`${baseUrl}/`, {}, { withCredentials: true })
 }
 
-export default { signup, login, verify }
+const logout = () => {
+  return axios.post(`${baseUrl}/logout`, {}, { withCredentials: true })
+}
+
+export default { signup, login, verify, logout }

@@ -118,12 +118,21 @@ const Home = () => {
       })
   }
 
-  const handleLogout = () => {
-    removeCookie('token')
-    toast.success('Logged out successfully', {
-      position: 'bottom-right'
-    })
-    navigate('/login')
+  const handleLogout = async () => {
+    try {
+      await authService.logout()
+      toast.success('Logged out successfully', {
+        position: 'bottom-right'
+      })
+      setTimeout(() => {
+        navigate('/login')
+      }, 1000)
+    } catch (error) {
+      console.log('Logout error', error)
+      toast.error('Logout failed', {
+        position: 'bottom-left'
+      })
+    }
   }
 
 
