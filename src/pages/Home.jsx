@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'
+import { useState, useEffect, useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import Header from '../components/Header'
@@ -12,6 +12,7 @@ const Home = () => {
   const [username, setUsername] = useState('')
   const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
+  const hasShownWelcomeToast = useRef(false)
 
   useEffect(() => {
     const verifyCookie = async () => {
@@ -21,9 +22,13 @@ const Home = () => {
 
         if (status) {
           setUsername(user)
-          toast(`Hello ${user}`, {
-            position: 'top-right'
-          })
+
+          if (!hasShownWelcomeToast.current) {
+            toast(`Hello ${user}`, {
+              position: 'top-right'
+            })
+            hasShownWelcomeToast.current = true
+          }
         } else {
           navigate('/login')
         }
