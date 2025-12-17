@@ -94,11 +94,12 @@ span a {
 }
 
 .home_page span {
-  
+  color: #fff;
 }
 
 .container {
-  max-width: 550px;
+  width: 700px;
+  max-width: 90vw;
   margin: 30px auto;
   overflow: auto;
   min-height: 300px;
@@ -126,16 +127,29 @@ span a {
 
 .header {
   display: flex;
-  justify-content: space-between;
+  flex-direction: column;
   align-items: center;
   color: #FFFCFC;
   margin-bottom: 20px;
+  gap: 15px;
+}
+
+.header-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+}
+
+.header h1 {
+  /* align-self: flex-start; */
+  font-size: 24px;
+  /* width: 100%; */
 }
 
 .logo {
   height: 48px;
   width: 240px;
-  margin-right: 10px;
 }
 
 .btn {
