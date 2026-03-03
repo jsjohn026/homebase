@@ -9,6 +9,7 @@ const AddWorkOrder = ({ onAdd }) => {
   }
   
   const [formData, setFormData] = useState(initialState)
+  const [attachments, setAttachments] = useState([])
 
   const onSubmit = (e) => {
     e.preventDefault()
@@ -18,12 +19,19 @@ const AddWorkOrder = ({ onAdd }) => {
       return
     }
 
-    const newOrder = {
-      ...formData, 
-      date: new Date().toString()
-    }
+    const data = new FormData()
 
-    onAdd(newOrder)
+    Object.entries(formData).forEach(([key, value]) => {
+      data.append(key, value)
+    })
+
+    data.append('date', new Date().toString())
+    
+    attachments.forEach((file) => {
+      data.append('attachments', file)
+    })
+
+    onAdd(data)
 
     setFormData(initialState)
   }
@@ -65,6 +73,11 @@ const AddWorkOrder = ({ onAdd }) => {
             name="submitterEmail" 
             value={formData.submitterEmail}
             onChange={handleChange}
+          />
+          <input 
+            type="file"
+            multiple
+            onChange={(e) => setAttachments((prev) => [...prev, ...Array.from(e.target.files)])}
           />
         </div>
 

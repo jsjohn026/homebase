@@ -80,17 +80,9 @@ const Home = () => {
       })
   }
   
-  const addOrder = (props) => {
-    const newOrderObject = {
-      issue: props.issue,
-      notes: props.notes,
-      submittedBy: props.submitter, 
-      submitterEmail: props.email,
-      dateSubmitted: props.date
-    }
-
+  const addOrder = (formData) => {
     orderService
-      .create(newOrderObject)
+      .create(formData)
       .then(response => {
         setOrders(prevOrders => [...prevOrders, response.data])
         toast.success('Order added successfully', {
