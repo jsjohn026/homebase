@@ -1,5 +1,5 @@
-import { useState, useEffect, useRef } from 'react'
-import { useNavigate } from 'react-router-dom'
+import { useState, useEffect } from 'react'
+import { useNavigate, useOutletContext } from 'react-router-dom'
 import { ToastContainer, toast } from 'react-toastify'
 import Header from '../components/Header'
 import AddWorkOrder from '../components/AddWorkOrder'
@@ -9,37 +9,15 @@ import authService from '../services/auth'
 
 const Home = () => {
   const navigate = useNavigate()
-  const [username, setUsername] = useState('')
+  const { username } = useOutletContext()
   const [showAddButton, setShowAddButton] = useState(false)
   const [orders, setOrders] = useState([])
-  const hasShownWelcomeToast = useRef(false)
 
   useEffect(() => {
-    const verifyCookie = async () => {
-      try {
-        const { data } = await authService.verify()
-        const { status, user } = data
-
-        if (status) {
-          setUsername(user)
-
-          if (!hasShownWelcomeToast.current) {
-            toast(`Hello ${user}`, {
-              position: 'top-right'
-            })
-            hasShownWelcomeToast.current = true
-          }
-        } else {
-          navigate('/login')
-        }
-      } catch (error) {
-        console.log('Auth verification error:', error)
-        navigate('/login')
-      }
+    if (username) {
+      toast(`Hello ${username}`, { position: 'top-right' })
     }
-
-    verifyCookie()
-  }, [navigate])
+  }, [username])
 
   useEffect(() => {
     if (username) {

@@ -1,6 +1,7 @@
 import { Route, Routes } from 'react-router-dom'
 import { Login, Signup, Home } from './pages'
 
+import ProtectedRoute from './components/ProtectedRoute'
 
 const Hello = ({ name, numOrders, days}) => {
   return (
@@ -18,9 +19,11 @@ const App = () => {
   return (
     <div className='App'>
       <Routes>
-        <Route path='/' element={<Home />} />
         <Route path='/login' element={<Login />} />
         <Route path='/signup' element={<Signup />} />
+        <Route element={<ProtectedRoute />}>
+          <Route path='/' element={<Home />} />
+        </Route>
       </Routes>
     </div>
   )
