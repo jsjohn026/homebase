@@ -179,6 +179,10 @@ span a {
   width: 100%;
 }
 
+.btn-danger {
+  background: #cc0000;
+}
+
 .task {
   background: #f4f4f4;
   color: #000;
