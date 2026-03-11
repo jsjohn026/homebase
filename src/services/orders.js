@@ -5,6 +5,10 @@ const getAll = () => {
   return axios.get(baseUrl, { withCredentials: true })
 }
 
+const getById = (id) => {
+  return axios.get(`${baseUrl}/${id}`, {withCredentials: true})
+}
+
 const create = newObject => {
   return axios.post(baseUrl, newObject, { withCredentials: true })
 }
@@ -19,6 +23,7 @@ const remove = (id) => {
 
 export default {
   getAll,
+  getById,
   create,
   update, 
   remove
