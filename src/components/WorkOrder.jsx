@@ -1,10 +1,7 @@
-import dayjs from 'dayjs'
-import advancedFormat from 'dayjs/plugin/advancedFormat'
+import dayjs from '../utils/dayjs'
 import { FaTimes, FaPaperclip , FaComment } from 'react-icons/fa'
 import { useRef } from 'react'
 import { useNavigate } from 'react-router-dom'
-
-dayjs.extend(advancedFormat)
 
 const WorkOrder = ({ order, onDelete, onToggle }) => {
   const formattedDate = dayjs(order.dateSubmitted).format('MMMM Do [at] h:mma')
